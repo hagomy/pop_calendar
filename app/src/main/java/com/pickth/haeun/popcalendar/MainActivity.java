@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setTitle("프로젝트");
 
         // 월별 캘린더 뷰 객체 참조
         monthView = (GridView) findViewById(R.id.gv_main_monthView);
