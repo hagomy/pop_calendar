@@ -25,13 +25,13 @@ public class rCallStateListener extends BroadcastReceiver {
             String state = bundle.getString(TelephonyManager.EXTRA_STATE_IDLE);
             if(state.equals(TelephonyManager.EXTRA_STATE_IDLE)) {
                 Log.d(TAG, "EXTRA_STATE_IDLE");
-                Toast.makeText(context, TAG, Toast.LENGTH_LONG).show();
+                Toast.makeText(context,  bundle.getString(TelephonyManager.EXTRA_INCOMING_NUMBER), Toast.LENGTH_LONG).show();
             }else if(state.equals(TelephonyManager.EXTRA_STATE_RINGING)){
                 Log.d(TAG, "EXTRA_STATE_RINGING INCOMMING NUMBER : " + bundle.getString(TelephonyManager.EXTRA_INCOMING_NUMBER));
-                Toast.makeText(context, TAG, Toast.LENGTH_LONG).show();
+                Toast.makeText(context,  bundle.getString(TelephonyManager.EXTRA_INCOMING_NUMBER), Toast.LENGTH_LONG).show();
             }else if(state.equals(TelephonyManager.EXTRA_STATE_OFFHOOK)) {
                 Log.d(TAG, "EXTRA_STATE_OFFHOOK");
-                Toast.makeText(context, TAG, Toast.LENGTH_LONG).show();
+                Toast.makeText(context,  bundle.getString(TelephonyManager.EXTRA_INCOMING_NUMBER), Toast.LENGTH_LONG).show();
             }
         }
     }
