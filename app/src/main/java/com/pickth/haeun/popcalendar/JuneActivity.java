@@ -6,13 +6,10 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Display;
-import android.view.Gravity;
 import android.view.View;
-import android.view.WindowManager;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.pickth.haeun.popcalendar.view.add.AddActivity;
 
 /**
  * Created by HaEun on 2018-05-28.

@@ -12,6 +12,8 @@ public class SplashActivity extends AppCompatActivity{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // 처음 시작하는 화면
+        // 바로 CalendarActivity로 넘김
         startActivity(new Intent(this, CalendarActivity.class));
         finish();
     }

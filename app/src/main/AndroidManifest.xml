@@ -22,7 +22,7 @@
         <activity android:name=".JuneActivity">
 
         </activity>
-        <activity android:name=".AddActivity" />
+        <activity android:name=".view.add.AddActivity" />
         <activity android:name=".view.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
