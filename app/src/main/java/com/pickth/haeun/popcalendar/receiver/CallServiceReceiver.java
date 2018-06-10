@@ -1,4 +1,4 @@
-package com.pickth.haeun.popcalendar;
+package com.pickth.haeun.popcalendar.receiver;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -7,11 +7,14 @@ import android.os.Bundle;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 
+import com.pickth.haeun.popcalendar.manager.CalendarDataManager;
+import com.pickth.haeun.popcalendar.model.Human;
+
 /**
  * Created by jinsil on 2018-06-04.
  */
 
-public class dCallStateListener extends BroadcastReceiver {
+public class CallStateListener extends BroadcastReceiver {
     public String TAG = getClass().getSimpleName();
 
     @Override
@@ -25,7 +28,10 @@ public class dCallStateListener extends BroadcastReceiver {
             if(state.equals(TelephonyManager.EXTRA_STATE_IDLE)){
                 Log.d(TAG, "EXTRA_STATE_IDLE");
             }else if(state.equals(TelephonyManager.EXTRA_STATE_RINGING)) {
-                Log.d(TAG, "EXTRA_STATE_RINGING INCOMMING NUMBER : " + bundle.getString(TelephonyManager.EXTRA_INCOMING_NUMBER));
+                String phoneNumber = bundle.getString(TelephonyManager.EXTRA_INCOMING_NUMBER);
+                Log.d(TAG, "EXTRA_STATE_RINGING INCOMMING NUMBER : " + phoneNumber);
+//                CalendarDataManager dataManager = new CalendarDataManager(context);
+//                dataManager.getItemsByHuman(new Human(phoneNumber));
             }else if(state.equals(TelephonyManager.EXTRA_STATE_OFFHOOK)){
                 Log.d(TAG, "EXTRA_STATE_OFFHOOK");
             }
