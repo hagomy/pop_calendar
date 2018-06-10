@@ -12,7 +12,7 @@ import com.pickth.haeun.popcalendar.model.MyDate;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
-public class CalendarDataManager {
+public class CalendarDataManager {  //메모 저장
     private Context mContext;
     private ArrayList<CalendarItem> mItems = new ArrayList<>();
 
@@ -77,8 +77,6 @@ public class CalendarDataManager {
 
         for(CalendarItem item : getCalendarItems()) {
             if(item.isEqualDate(date)) {
-                Log.d("sssss", item.title.toString());
-
                 items.add(item);
             }
         }

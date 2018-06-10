@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.pickth.haeun.popcalendar.R;
 import com.pickth.haeun.popcalendar.model.CalendarItem;
@@ -20,8 +21,9 @@ import java.util.ArrayList;
 public class CalendarListDialog extends Dialog {
     MyDate date;
     RecyclerView rvList;
+    TextView tvDate;
     private ArrayList<CalendarItem> mItems;
-
+    
     public CalendarListDialog(Context context, ArrayList<CalendarItem> items, MyDate date) {
         super(context);
         this.date = date;
@@ -46,6 +48,9 @@ public class CalendarListDialog extends Dialog {
 
         // 새로고침
         adapter.notifyDataSetChanged();
+
+        tvDate = (TextView)findViewById(R.id.tv_dialog_date);
+        tvDate.setText(date.getYear() + "년 " + date.getMonth() + "월 " + date.getDay() + "일");
 
         // 버튼
         Button btnAdd = findViewById(R.id.btn_dialog_add);

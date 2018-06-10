@@ -167,11 +167,6 @@ public class CalendarAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             rvSchedule.setAdapter(adapter);
             rvSchedule.setLayoutManager(new LinearLayoutManager(itemView.getContext(), LinearLayout.VERTICAL,false));
 
-            // 아이템 추가
-            for(CalendarItem item: items) {
-                adapter.addItem(item);
-            }
-
             // 새로고침
             adapter.notifyDataSetChanged();
 

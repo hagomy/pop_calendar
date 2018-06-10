@@ -1,4 +1,4 @@
-package com.pickth.haeun.popcalendar;
+package com.pickth.haeun.popcalendar.receiver;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

@@ -4,7 +4,7 @@ import android.util.Log;
 
 import java.util.Calendar;
 
-public class CalendarManger {
+public class CalendarManger {   //달력 만들기
     private String TAG = "CalendarManger";
     private Calendar mCalendar;
 

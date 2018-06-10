@@ -53,9 +53,6 @@ public class CalendarListAdapter extends RecyclerView.Adapter<CalendarListAdapte
             tvTitle.setText(item.title);
             tvMemo.setText(item.memo);
 
-            itemView.setClickable(false);
-            tvTitle.setClickable(false);
-            tvMemo.setClickable(false);
             if(type == 0) {
                 tvMemo.setVisibility(View.GONE);
             } else {
