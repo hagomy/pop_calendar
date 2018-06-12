@@ -23,7 +23,7 @@ public class CalendarListDialog extends Dialog {
     RecyclerView rvList;
     TextView tvDate;
     private ArrayList<CalendarItem> mItems;
-    
+
     public CalendarListDialog(Context context, ArrayList<CalendarItem> items, MyDate date) {
         super(context);
         this.date = date;

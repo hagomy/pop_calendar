@@ -5,6 +5,7 @@
 
     <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!--수신-->
     <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" /> <!--발신-->
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
 
     <application
         android:allowBackup="true"
@@ -14,8 +15,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".JuneActivity" />
-
         <activity android:name=".view.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,6 +23,7 @@
         </activity>
         <activity android:name=".view.add.AddActivity" />
         <activity android:name=".view.calendar.CalendarActivity" />
+        <activity android:name=".content.ContentResolver"/>
 
         <receiver android:name=".receiver.CallServiceReceiver">
             <intent-filter>
