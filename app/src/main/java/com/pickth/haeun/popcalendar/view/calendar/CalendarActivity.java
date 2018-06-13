@@ -5,7 +5,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -15,7 +14,6 @@ import com.pickth.haeun.popcalendar.listener.CalendarClickListener;
 import com.pickth.haeun.popcalendar.model.CalendarItem;
 import com.pickth.haeun.popcalendar.model.MyDate;
 import com.pickth.haeun.popcalendar.util.GridSpacingItemDecoration;
-import com.pickth.haeun.popcalendar.util.StringUtil;
 import com.pickth.haeun.popcalendar.view.dialog.CalendarListDialog;
 
 import java.util.ArrayList;

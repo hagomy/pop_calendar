@@ -10,6 +10,7 @@ import android.util.Log;
 
 import com.pickth.haeun.popcalendar.manager.CalendarDataManager;
 import com.pickth.haeun.popcalendar.model.Human;
+import com.pickth.haeun.popcalendar.view.pop.Callpop;
 
 /**
  * Created by jinsil on 2018-06-04.
@@ -40,6 +41,7 @@ public class CallServiceReceiver extends BroadcastReceiver {
             }else if(state.equals(TelephonyManager.EXTRA_STATE_RINGING)) {
                 String phoneNumber = bundle.getString(TelephonyManager.EXTRA_INCOMING_NUMBER);
                 Log.d(TAG, "EXTRA_STATE_RINGING INCOMMING NUMBER : " + phoneNumber);
+                new Callpop(context, phoneNumber);
 //                CalendarDataManager dataManager = new CalendarDataManager(context);
 //                dataManager.getItemsByHuman(new Human(phoneNumber));
             }else if(state.equals(TelephonyManager.EXTRA_STATE_OFFHOOK)){
