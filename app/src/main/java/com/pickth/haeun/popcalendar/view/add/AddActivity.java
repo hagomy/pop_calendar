@@ -34,6 +34,7 @@ public class AddActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
+        getSupportActionBar().setElevation(0);
 
         // CalendarListDialog 에서 넘긴 연도, 월, 날짜를 받아오는 부분
         int year = getIntent().getIntExtra("year", StringUtil.INSTANCE.getYear());
@@ -82,7 +83,6 @@ public class AddActivity extends AppCompatActivity {
             case R.id.action_add :
                 String title = etTitle.getText().toString();
                 String memo = etMemo.getText().toString();
-
                 String name = tvName.getText().toString();
                 String tel = tvTel.getText().toString();
                 Human human = new Human(name, tel);

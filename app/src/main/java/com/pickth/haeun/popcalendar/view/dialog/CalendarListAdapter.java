@@ -59,7 +59,7 @@ public class CalendarListAdapter extends RecyclerView.Adapter<CalendarListAdapte
                 tvTel.setText(item.human.getTel());
             }catch (Exception e){}
 
-            if (tvMemo.equals("")) type = 0;
+            if (item.memo.equals("")) type = 0;
 
             if(type == 0) {
                 tvMemo.setVisibility(View.GONE);

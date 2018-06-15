@@ -31,6 +31,7 @@ public class CalendarActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
+        getSupportActionBar().setElevation(0);
 
         // rvCalendar를 연동할 adapter 설정
         mAdapter = new CalendarAdapter();
