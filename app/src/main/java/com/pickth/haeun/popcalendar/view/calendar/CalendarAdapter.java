@@ -15,9 +15,8 @@ import com.pickth.haeun.popcalendar.manager.CalendarDataManager;
 import com.pickth.haeun.popcalendar.manager.CalendarManger;
 import com.pickth.haeun.popcalendar.model.CalendarItem;
 import com.pickth.haeun.popcalendar.model.MyDate;
-import com.pickth.haeun.popcalendar.view.dialog.CalendarListAdapter;
+import com.pickth.haeun.popcalendar.view.dialog.CalendarListAdapterTitle;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class CalendarAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -162,7 +161,7 @@ public class CalendarAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             tvDate.setText(""+position);
 
             // recycler view로 아이템 리스트 뿌려주기
-            CalendarListAdapter adapter = new CalendarListAdapter(0);
+            CalendarListAdapterTitle adapter = new CalendarListAdapterTitle(0);
             RecyclerView rvSchedule = itemView.findViewById(R.id.rv_day_schedule);
             rvSchedule.setAdapter(adapter);
             rvSchedule.setLayoutManager(new LinearLayoutManager(itemView.getContext(), LinearLayout.VERTICAL,false));
