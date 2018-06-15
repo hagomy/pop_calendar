@@ -6,16 +6,10 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.SimpleCursorAdapter;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.pickth.haeun.popcalendar.R;
 import com.pickth.haeun.popcalendar.view.add.AddActivity;
@@ -24,7 +18,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-//https://blog.naver.com/qkwldqk/50147100401
 //http://mainia.tistory.com/4924
 
 public class ContentResolver extends AppCompatActivity {
@@ -41,17 +34,23 @@ public class ContentResolver extends AppCompatActivity {
         dataList = new ArrayList<Map<String, String>>();
         Cursor c = getContentResolver().query(
                 ContactsContract.Contacts.CONTENT_URI,
-                null,
-                null,
-                null,
-                ContactsContract.Contacts.DISPLAY_NAME_PRIMARY + " asc");
+                null,   //가져올 컬럼 이름 목록, null이면 모든 컬럼
+                null,   //where 절에 해당하는 내용
+                null,   //selection에서 ?로 표시한 곳에 들어갈 데이터
+                ContactsContract.Contacts.DISPLAY_NAME_PRIMARY + " asc" //정렬을 위한 order by 구문
+        );
 
         while (c.moveToNext()){
             HashMap<String, String> map = new HashMap<String, String>();
+
+            //연락처 id 값
             String id = c.getString(c.getColumnIndex(ContactsContract.Contacts._ID));
+
+            //연락처 대표 이름
             String name = c.getString(c.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME_PRIMARY));
             map.put("name",name);
 
+            //ID로 전화 정보 조회
             Cursor phoneCursor = getContentResolver().query(
                     ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
                     null,
@@ -60,11 +59,11 @@ public class ContentResolver extends AppCompatActivity {
                     null
             );
 
+            //데이터가 있는 경우
             if (phoneCursor.moveToFirst()){
-                String number = phoneCursor.getString(phoneCursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
-                map.put("phone", number);
+                String tel = phoneCursor.getString(phoneCursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+                map.put("phone", tel);
             }
-
             phoneCursor.close();
             dataList.add(map);
         }//end while
@@ -73,9 +72,6 @@ public class ContentResolver extends AppCompatActivity {
         SimpleAdapter adapter = new SimpleAdapter(getApplicationContext(),
                 dataList,
                 android.R.layout.simple_list_item_2,
-                //R.layout.item_contact_list,
-                // LayoutInflater.from(context).inflate(R.layout.item_pop, null),
-                //LayoutInflater.from(getApplicationContext()).inflate(R.layout.item_contact_list, null),
                 new String[]{"name", "phone"},
                 new int[]{android.R.id.text1, android.R.id.text2}
         );
@@ -84,10 +80,10 @@ public class ContentResolver extends AppCompatActivity {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String name = dataList.get(i).get("name");
-                String number = dataList.get(i).get("phone");
+                String name = dataList.get(i).get("name");  //선택된 연락처의 이름
+                String tel = dataList.get(i).get("phone");   //선택된 연락처의 번호
                 Intent outIntent = new Intent(getApplicationContext(), AddActivity.class);
-                outIntent.putExtra("Number", number);
+                outIntent.putExtra("Tel", tel);
                 outIntent.putExtra("Name", name);
                 setResult(RESULT_OK, outIntent);
                 finish();
