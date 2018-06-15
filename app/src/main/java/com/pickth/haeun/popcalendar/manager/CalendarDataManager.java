@@ -1,12 +1,10 @@
 package com.pickth.haeun.popcalendar.manager;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.pickth.haeun.popcalendar.model.CalendarItem;
-import com.pickth.haeun.popcalendar.model.Human;
 import com.pickth.haeun.popcalendar.model.MyDate;
 
 import java.lang.reflect.Type;
@@ -74,7 +72,6 @@ public class CalendarDataManager {  //메모 저장
      */
     public ArrayList<CalendarItem> getItemsByDate(MyDate date) {
         ArrayList<CalendarItem> items = new ArrayList<>();
-
         for(CalendarItem item : getCalendarItems()) {
             if(item.isEqualDate(date)) {
                 items.add(item);
@@ -87,16 +84,20 @@ public class CalendarDataManager {  //메모 저장
 
     /**
      * 해당 사람과의 일정을 모두 가져오기
-     * @param human
+     * @param phoneNumber
      * @return
      */
-    public ArrayList<CalendarItem> getItemsByHuman(Human human) {
+    public ArrayList<CalendarItem> getItemsByHuman(String phoneNumber) {
         ArrayList<CalendarItem> items = new ArrayList<>();
+        ArrayList<CalendarItem> getItems = getCalendarItems();
 
-        for(CalendarItem item : getCalendarItems())
-            if(item.human == null && item.human.equals(human))
-                items.add(item);
-
+        for(int i=0; i<getItems.size(); i++) {
+            CalendarItem tmp = getItems.get(i);
+            if (tmp.human.getTel().equals(phoneNumber)) {
+                items.add(tmp);
+            }
+        }
         return items;
     }
+
 }

@@ -4,13 +4,14 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.pickth.haeun.popcalendar.manager.CalendarDataManager;
-import com.pickth.haeun.popcalendar.model.Human;
-import com.pickth.haeun.popcalendar.view.pop.Callpop;
+import com.pickth.haeun.popcalendar.model.CalendarItem;
+
+import java.util.ArrayList;
 
 /**
  * Created by jinsil on 2018-06-04.
@@ -25,25 +26,22 @@ public class CallServiceReceiver extends BroadcastReceiver {
         Bundle bundle = intent.getExtras();
 
         if(action.equals("android.intent.action.PHONE_STATE")){
-
-//            TelephonyManager telephony = (TelephonyManager)context.getSystemService(Context.TELEPHONY_SERVICE);
-//            telephony.listen(new PhoneStateListener() {
-//                @Override
-//                public void onCallStateChanged(int state, String incomingNumber) {
-//                    super.onCallStateChanged(state, incomingNumber);
-//                    Log.d(TAG, "EXTRA_STATE_RINGING INCOMMING NUMBER : " + incomingNumber);
-//                }
-//            }, PhoneStateListener.LISTEN_CALL_STATE);
-
             String state = bundle.getString(TelephonyManager.EXTRA_STATE);
             if(state.equals(TelephonyManager.EXTRA_STATE_IDLE)){
                 Log.d(TAG, "EXTRA_STATE_IDLE");
             }else if(state.equals(TelephonyManager.EXTRA_STATE_RINGING)) {
                 String phoneNumber = bundle.getString(TelephonyManager.EXTRA_INCOMING_NUMBER);
                 Log.d(TAG, "EXTRA_STATE_RINGING INCOMMING NUMBER : " + phoneNumber);
-                new Callpop(context, phoneNumber);
-//                CalendarDataManager dataManager = new CalendarDataManager(context);
-//                dataManager.getItemsByHuman(new Human(phoneNumber));
+
+                CalendarDataManager dataManager = new CalendarDataManager(context);
+                ArrayList<CalendarItem> arrayList = dataManager.getItemsByHuman(phoneNumber);
+                String array = "";
+                for (int i=0; i<arrayList.size(); i++){
+                    array += arrayList.get(i).date.getYear() +"-"+ arrayList.get(i).date.getMonth() +"-"+ arrayList.get(i).date.getDay();
+                    array += "  "+ arrayList.get(i).title +"  "+ arrayList.get(i).memo + "\n";
+                }
+                Toast.makeText(context, array ,Toast.LENGTH_LONG).show();
+
             }else if(state.equals(TelephonyManager.EXTRA_STATE_OFFHOOK)){
                 Log.d(TAG, "EXTRA_STATE_OFFHOOK");
             }

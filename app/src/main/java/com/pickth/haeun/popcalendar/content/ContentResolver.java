@@ -28,6 +28,7 @@ public class ContentResolver extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
+        getSupportActionBar().setElevation(0);
 
         mListView = (ListView)findViewById(R.id.lv_contact);
 
@@ -82,8 +83,10 @@ public class ContentResolver extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String name = dataList.get(i).get("name");  //선택된 연락처의 이름
                 String tel = dataList.get(i).get("phone");   //선택된 연락처의 번호
+
+                String tt = "010"+tel.charAt(4)+tel.charAt(5)+tel.charAt(6)+tel.charAt(7)+""+tel.charAt(9)+tel.charAt(10)+tel.charAt(11)+tel.charAt(12);
                 Intent outIntent = new Intent(getApplicationContext(), AddActivity.class);
-                outIntent.putExtra("Tel", tel);
+                outIntent.putExtra("Tel", tt);
                 outIntent.putExtra("Name", name);
                 setResult(RESULT_OK, outIntent);
                 finish();
