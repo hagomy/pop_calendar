@@ -23,8 +23,10 @@
                 android:text=" : "/>
             <EditText
                 android:id="@+id/et_add_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"/>
         </TableRow>
         <TableRow>
             <TextView
@@ -37,25 +39,27 @@
                 android:text=" : "/>
             <EditText
                 android:id="@+id/et_add_memo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"/>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="약속자"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" : "/>
+            <Button
+                android:id="@+id/btn_add_contact"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/ic_contact"/>
         </TableRow>
     </TableLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="약속자 : "/>
-        <Button
-            android:id="@+id/btn_add_contact"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_contact"/>
-    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
