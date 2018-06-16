@@ -20,7 +20,7 @@ import java.util.Map;
 
 //http://mainia.tistory.com/4924
 
-public class ContentResolver extends AppCompatActivity {
+public class ContentResolverActivity extends AppCompatActivity {
     ArrayList<Map<String, String>> dataList;
     ListView mListView;
 

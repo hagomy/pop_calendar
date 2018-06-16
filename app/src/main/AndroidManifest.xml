@@ -23,7 +23,7 @@
         </activity>
         <activity android:name=".view.add.AddActivity" />
         <activity android:name=".view.calendar.CalendarActivity" />
-        <activity android:name=".content.ContentResolver"/>
+        <activity android:name=".content.ContentResolverActivity"/>
 
         <receiver android:name=".receiver.CallServiceReceiver">
             <intent-filter>

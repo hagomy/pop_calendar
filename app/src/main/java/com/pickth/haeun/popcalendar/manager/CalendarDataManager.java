@@ -58,15 +58,6 @@ public class CalendarDataManager {  //메모 저장
     }
 
     /**
-     * 캘린더 아이템을 제거하는 메소드
-     * @param position
-     */
-    public void removeItem(int position) {
-        getCalendarItems().remove(position);
-        notifyDataSetChanged();
-    }
-
-    /**
      * 해당 날짜의 아이템들을 모두 가져오기
      * @return
      */
@@ -77,8 +68,6 @@ public class CalendarDataManager {  //메모 저장
                 items.add(item);
             }
         }
-
-
         return items;
     }
 

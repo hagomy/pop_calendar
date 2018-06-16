@@ -1,6 +1,5 @@
 package com.pickth.haeun.popcalendar.view.calendar;
 
-import android.graphics.Color;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -22,9 +21,6 @@ import java.util.ArrayList;
 public class CalendarAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private CalendarManger mCalendarManager;
     private CalendarClickListener clickListener;
-
-    public static int oddColor = Color.rgb(225, 225, 225);
-    public static int headColor = Color.rgb(12, 32, 158);
 
     // 요일을 보여주는 부분과 날짜를 보여주는 부분을 구분하는 상수
     private static final int ITEM_DATE = 0;
@@ -94,16 +90,10 @@ public class CalendarAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
             int dayNumber = (position + 1) - mCalendarManager.getFirstDay() - dateSize;
 
-            // 일요일부터 시작일 때 맨 윗줄을 띄움
-//            if(mCalendarManager.getFirstDay() == 0) {
-//                dayNumber -= 7;
-//            }
-
             // 1일 이전이나 달의 마지막 일 이후일 때
             if (dayNumber < 1 || dayNumber > mCalendarManager.getLastDay()) {
                 return;
             }
-
 
             // 날짜 뷰 홀더에 바인딩하는 부분
             ((CalendarViewHolder)holder).onBind(dayNumber, clickListener, new MyDate(year, month, dayNumber));

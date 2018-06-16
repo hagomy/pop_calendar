@@ -13,12 +13,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.pickth.haeun.popcalendar.R;
-import com.pickth.haeun.popcalendar.content.ContentResolver;
+import com.pickth.haeun.popcalendar.content.ContentResolverActivity;
 import com.pickth.haeun.popcalendar.manager.CalendarDataManager;
 import com.pickth.haeun.popcalendar.model.CalendarItem;
 import com.pickth.haeun.popcalendar.model.Human;
 import com.pickth.haeun.popcalendar.model.MyDate;
-import com.pickth.haeun.popcalendar.util.StringUtil;
+
+import java.util.Calendar;
 
 /**
  * Created by HaEun on 2018-05-28.
@@ -37,9 +38,9 @@ public class AddActivity extends AppCompatActivity {
         getSupportActionBar().setElevation(0);
 
         // CalendarListDialog 에서 넘긴 연도, 월, 날짜를 받아오는 부분
-        int year = getIntent().getIntExtra("year", StringUtil.INSTANCE.getYear());
-        int month = getIntent().getIntExtra("month", StringUtil.INSTANCE.getMonth());
-        int day = getIntent().getIntExtra("day", StringUtil.INSTANCE.getDay());
+        int year = getIntent().getIntExtra("year", Calendar.getInstance().get(Calendar.YEAR));
+        int month = getIntent().getIntExtra("month", Calendar.getInstance().get(Calendar.MONTH)+1);
+        int day = getIntent().getIntExtra("day", Calendar.getInstance().get(Calendar.DATE));
         date = new MyDate(year, month, day);
 
         TextView tvDate = findViewById(R.id.tv_add_date);
@@ -51,7 +52,7 @@ public class AddActivity extends AppCompatActivity {
         btnContact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), ContentResolver.class);
+                Intent intent = new Intent(getApplicationContext(), ContentResolverActivity.class);
                 startActivityForResult(intent,0);
             }
         });

@@ -40,22 +40,6 @@ public class CalendarManger {   //달력 만들기
     }
 
     /**
-     * 주의 시작 요일을 구하는 메소드
-     * 캘린더에서는 1~7을 사용하고 있는데
-     * 여기서는 0~6을 사용하기 위함.
-     * @return 0은 일요일
-     */
-    public int getFirstDayOfWeek() {
-        switch (mStartDay) {
-            case 7: // saturday
-            case 2: // monday
-                return mStartDay - 1;
-            default:
-                return 0;
-        }
-    }
-
-    /**
      * 계산하는 메소드
      */
     private void calculate() {
@@ -102,7 +86,6 @@ public class CalendarManger {   //달력 만들기
         }
     }
 
-
     public void setPreviousMonth() {
         mCalendar.add(Calendar.MONTH, -1);
         calculate();
@@ -125,6 +108,5 @@ public class CalendarManger {   //달력 만들기
                         "\ngetFirstDay() : " + getFirstDay() +
                         "\nmLastDay : " + mLastDay);
     }
-
 
 }
